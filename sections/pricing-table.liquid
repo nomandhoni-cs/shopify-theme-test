@@ -1,0 +1,192 @@
+{{ 'styles.css' | asset_url | stylesheet_tag }}
+<section
+  class="relative container mx-auto z-10 overflow-hidden bg-white dark:bg-dark pt-20 pb-12 lg:pt-[120px] lg:pb-[90px] p-10"
+>
+  <div class="container mx-auto">
+    <div class="flex flex-wrap -mx-4">
+      <div class="w-full px-4">
+        <div class="mx-auto mb-[60px] max-w-[510px] text-center">
+          <span class="block text-lg font-semibold text-primary mb-2">{{ section.settings.table_name }}</span>
+          <p class="text-3xl leading-[1.208] font-bold text-dark dark:text-white sm:text-4xl md:text-[40px] mb-3">
+            {{ section.settings.table_heading }}
+          </p>
+          <p class="text-base text-body-color dark:text-dark-6">
+            {{ section.settings.table_description }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap justify-center -mx-4">
+      {% for block in section.blocks %}
+        <div class="w-full px-4 md:w-1/2 lg:w-1/3">
+          <div
+            class="relative z-10 mb-10 overflow-hidden rounded-lg border-2 border-stroke dark:border-dark-3 bg-white dark:bg-dark-2 py-10 px-8 shadow-lg sm:p-12 lg:py-10 lg:px-6 xl:p-[50px]"
+          >
+            <!-- Package Name -->
+            <span class="block text-lg font-semibold text-primary mb-3">
+              {{ block.settings.package_name }}
+            </span>
+
+            <!-- Price -->
+            <h2 class="text-[42px] font-bold text-dark dark:text-white mb-5">
+              <span>${{ block.settings.package_price }}</span>
+              <span class="text-base font-medium text-body-color dark:text-dark-6">
+                / {{ block.settings.package_duration }}
+              </span>
+            </h2>
+
+            <!-- Description -->
+            <p
+              class="text-base text-body-color dark:text-dark-6 border-b border-stroke dark:border-dark-3 pb-8 mb-8"
+            >
+              {{ block.settings.package_description }}
+            </p>
+
+            <!-- Features -->
+            <div class="flex flex-col gap-3 mb-9">
+              <p class="text-base text-body-color dark:text-dark-6">{{ block.settings.package_feature_1 }}</p>
+              <p class="text-base text-body-color dark:text-dark-6">{{ block.settings.package_feature_2 }}</p>
+              <p class="text-base text-body-color dark:text-dark-6">{{ block.settings.package_feature_3 }}</p>
+              <p class="text-base text-body-color dark:text-dark-6">{{ block.settings.package_feature_4 }}</p>
+              <p class="text-base text-body-color dark:text-dark-6">{{ block.settings.package_feature_5 }}</p>
+            </div>
+
+            <!-- Button -->
+            <a
+              href="{{ block.settings.button_link }}"
+              class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
+            >
+              {{ block.settings.button_text }}
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Pricing Table",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Pricing Table"
+    },
+    {
+      "type": "text",
+      "id": "table_name",
+      "label": "Set a name for this table",
+      "default": "Pricing Table"
+    },
+    {
+      "type": "text",
+      "id": "table_heading",
+      "label": "Set a name for this table",
+      "default": "Our Pricing Plan"
+    },
+    {
+      "type": "text",
+      "id": "table_description",
+      "label": "Set a name for this table",
+      "default": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pricing_table_block",
+      "name": "Pricing Table Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "package_name",
+          "label": "Set a Package Name",
+          "default": "Personal"
+        },
+        {
+          "type": "number",
+          "id": "package_price",
+          "label": "Set a Package Price",
+          "default": 19
+        },
+        {
+          "type": "select",
+          "id": "package_duration",
+          "label": "Set a Package Duration",
+          "options": [
+            {
+              "value": "monthly",
+              "label": "Monthly"
+            },
+            {
+              "value": "yearly",
+              "label": "Yearly"
+            }
+          ],
+          "default": "monthly"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Set a Button Text",
+          "default": "Get Started"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Set a Button Link"
+        },
+        {
+          "type": "text",
+          "id": "package_description",
+          "label": "Set a Package Description",
+          "default": "Lorem ipsum dolor sit amet."
+        },
+        {
+          "type": "text",
+          "id": "package_feature_1",
+          "label": "Set a Package Features",
+          "default": "Feature 1"
+        },
+        {
+          "type": "text",
+          "id": "package_feature_2",
+          "label": "Set a Package Features",
+          "default": "Feature 2"
+        },
+        {
+          "type": "text",
+          "id": "package_feature_3",
+          "label": "Set a Package Features",
+          "default": "Feature 3"
+        },
+        {
+          "type": "text",
+          "id": "package_feature_4",
+          "label": "Set a Package Features",
+          "default": "Feature 4"
+        },
+        {
+          "type": "text",
+          "id": "package_feature_5",
+          "label": "Set a Package Features",
+          "default": "Feature 5"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pricing Table",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
