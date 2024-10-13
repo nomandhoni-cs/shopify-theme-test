@@ -1,0 +1,109 @@
+{{ 'styles.css' | asset_url | stylesheet_tag }}
+<section
+  class="hero flex items-center min-h-screen relative z-[1] py-16 lg:py-28 px-4 sm:px-6 bg-gray-100 bg-cover bg-center text-center"
+  style="background-image: url('{{ section.settings.image | img_url: 'master' }}'); background-size: cover;"
+>
+  <div class="w-full max-w-lg sm:max-w-3xl mx-auto">
+    <div class="text-xs sm:text-sm mb-3 text-[{{-section.settings.color_scheme.settings.text-}}]">
+      {{ section.settings.my_id }}
+    </div>
+
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 leading-tight text-[{{-section.settings.color_scheme.settings.text-}}]">
+      {{ section.settings.title }}
+    </h1>
+
+    <div class="flex flex-wrap items-center gap-4 justify-center">
+      <a
+        href="{{ section.settings.btn_url }}"
+        class="bg-[{{-section.settings.color_scheme.settings.button-}}] text-[{{-section.settings.color_scheme.settings.button_label-}}] shadow-md text-base sm:text-lg px-4 py-2 rounded-md inline-flex justify-center items-center cursor-pointer no-underline leading-tight transition-all duration-200 hover:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-700"
+      >
+        {{- section.settings.btn_text }}
+      </a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Image Slider",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "header",
+      "content": "My Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "my_id",
+      "label": "My setting label",
+      "default": "Enter text here"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Welcome message",
+      "default": "Welcome to my shop!"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text",
+      "default": "Learn more"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "hero-image-slider-block",
+      "name": "Hero Image Slider Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button URL"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
