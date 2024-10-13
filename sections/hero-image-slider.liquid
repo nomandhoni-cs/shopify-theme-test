@@ -8,10 +8,9 @@
       {{ section.settings.my_id }}
     </div>
 
-    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 leading-tight text-[{{-section.settings.color_scheme.settings.text-}}]">
+    <h1 class="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 leading-tight text-[{{-section.settings.color_scheme.settings.text-}}]">
       {{ section.settings.title }}
     </h1>
-
     <div class="flex flex-wrap items-center gap-4 justify-center">
       <a
         href="{{ section.settings.btn_url }}"
@@ -103,6 +102,12 @@
           "label": "Button URL"
         }
       ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Image Slider",
+      "category": "Custom"
     }
   ]
 }
