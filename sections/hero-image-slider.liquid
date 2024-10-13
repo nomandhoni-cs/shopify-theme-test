@@ -1,22 +1,28 @@
 {{ 'styles.css' | asset_url | stylesheet_tag }}
 <section
-  class="hero flex items-center min-h-screen relative z-[1] py-16 lg:py-28 px-4 sm:px-6 bg-gray-100 bg-cover bg-center text-center"
+  class="bg-center bg-no-repeat bg-gray-700 bg-blend-multiply"
   style="background-image: url('{{ section.settings.image | img_url: 'master' }}'); background-size: cover;"
 >
-  <div class="w-full max-w-lg sm:max-w-3xl mx-auto">
-    <div class="text-xs sm:text-sm mb-3 text-[{{-section.settings.color_scheme.settings.text-}}]">
-      {{ section.settings.my_id }}
-    </div>
-
-    <h1 class="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 leading-tight text-[{{-section.settings.color_scheme.settings.text-}}]">
+  <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
+    <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
       {{ section.settings.title }}
     </h1>
-    <div class="flex flex-wrap items-center gap-4 justify-center">
+    <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">
+      {{ section.settings.subtitle }}
+    </p>
+    <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
       <a
-        href="{{ section.settings.btn_url }}"
-        class="bg-[{{-section.settings.color_scheme.settings.button-}}] text-[{{-section.settings.color_scheme.settings.button_label-}}] shadow-md text-base sm:text-lg px-4 py-2 rounded-md inline-flex justify-center items-center cursor-pointer no-underline leading-tight transition-all duration-200 hover:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-700"
+        href="{{section.settings.btn1_url}}"
+        class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
       >
-        {{- section.settings.btn_text }}
+        {{ section.settings.btn1_text }}
+        {{ 'icon-arrow.svg' | inline_asset_content }}
+      </a>
+      <a
+        href="{{section.settings.btn2_url}}"
+        class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400"
+      >
+        {{ section.settings.btn2_text }}
       </a>
     </div>
   </div>
@@ -43,13 +49,13 @@
     },
     {
       "type": "text",
-      "id": "my_id",
+      "id": "title",
       "label": "My setting label",
       "default": "Enter text here"
     },
     {
       "type": "text",
-      "id": "title",
+      "id": "subtitle",
       "label": "Welcome message",
       "default": "Welcome to my shop!"
     },
@@ -61,14 +67,25 @@
     },
     {
       "type": "text",
-      "id": "btn_text",
-      "label": "Button Text",
+      "id": "btn1_text",
+      "label": "Button 1 Text",
       "default": "Learn more"
     },
     {
       "type": "url",
-      "id": "btn_url",
-      "label": "Button URL"
+      "id": "btn1_url",
+      "label": "Button 1 URL"
+    },
+    {
+      "type": "text",
+      "id": "btn2_text",
+      "label": "Button 2 Text",
+      "default": "Learn more"
+    },
+    {
+      "type": "url",
+      "id": "btn2_url",
+      "label": "Button 2 URL"
     }
   ],
   "blocks": [
